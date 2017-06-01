@@ -10,8 +10,8 @@ get_env() {
   fi
 }
 
-echo "-----> Sending GroupMe notification..."
-curl -o jq https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64
+echo "-----> Sending GroupMe notification (commit $SOURCE_VERSION)..."
+curl -Lo jq https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64
 chmod +x ./jq
 bot_id=$(get_env $3 BUILD_GROUPME_BOT_ID)
 gh_repo=$(get_env $3 BUILD_GITHUB_REPO)
