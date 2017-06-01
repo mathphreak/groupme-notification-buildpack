@@ -15,5 +15,5 @@ curl -Lo jq https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64
 chmod +x ./jq
 bot_id=$(get_env $3 BUILD_GROUPME_BOT_ID)
 gh_repo=$(get_env $3 BUILD_GITHUB_REPO)
-commit_msg=$(curl https://api.github.com/repos/$gh_repo/commits/$SOURCE_VERSION | ./jq '.commit.message')
+commit_msg=$(curl https://api.github.com/repos/$gh_repo/commits/$SOURCE_VERSION | ./jq --raw-output '.commit.message')
 curl -X POST --data-urlencode "text=🤖🛠️ Reporting for duty! Last update: $commit_msg" "https://api.groupme.com/v3/bots/post?bot_id=$bot_id"
