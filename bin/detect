@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo "GroupMe Notified"
+exit 0

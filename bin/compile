@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [[ -f $3/BUILD_GROUPME_BOT_ID ]]; then
+  bot_id=$(cat $3/BUILD_GROUPME_BOT_ID)
+  curl -X POST --data-urlencode "text=🤖🛠️ Reporting for duty! Last update: $(git log -1 --pretty=format:%s)" "https://api.groupme.com/v3/bots/post?bot_id=$bot_id"
+  echo "-----> GroupMe notification sent!"
+else
+  echo "-----> Environment variable BUILD_GROUPME_BOT_ID not found!"
+  exit 1
+fi
